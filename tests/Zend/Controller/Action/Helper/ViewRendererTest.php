@@ -924,9 +924,9 @@ class Zend_Controller_Action_Helper_ViewRendererTest extends PHPUnit\Framework\T
 
         $this->helper->setActionController(
             new Bar_IndexController(
-               $this->request,
-               $this->response,
-               array()
+                $this->request,
+                $this->response,
+                array()
            )
        );
 
