@@ -655,4 +655,17 @@ class Zend_Controller_FrontTest extends PHPUnit\Framework\TestCase
 
         $this->assertFalse(Zend_Controller_Action_HelperBroker::hasHelper('viewRenderer'));
     }
+
+
+    public function testDispatcherHandlesTypeError()
+    {
+        $request = new Zend_Controller_Request_Http('http://example.com/index/type-error');
+
+        $this->_controller->setRequest($request);
+        $response = new Zend_Controller_Response_Cli();
+        $this->_controller->throwExceptions(false);
+        $this->_controller->dispatch($request, $response);
+
+        $this->assertContains('Type error action called', $this->_controller->getResponse()->getBody());
+    }
 }
