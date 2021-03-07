@@ -676,7 +676,7 @@ class Zend_Controller_FrontTest extends PHPUnit\Framework\TestCase
         $response = new Zend_Controller_Response_Cli();
         $this->_controller->throwExceptions(true);
 
-        $this->expectExceptionMessage('Return value of IndexController::produceTypeError() must be an instance of IndexController, instance of stdClass returned');
+        $this->expectDeprecationMessageMatches('#(IndexController::produceTypeError\(\): Return value must be of type IndexController, stdClass returned)|(Return value of IndexController::produceTypeError\(\) must be an instance of IndexController, instance of stdClass returned)#');
         $this->expectException(TypeError::class);
         $this->_controller->dispatch($request, $response);
     }
