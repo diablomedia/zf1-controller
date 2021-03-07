@@ -242,11 +242,11 @@ class Zend_Controller_Router_Route_Regex extends Zend_Controller_Router_Route_Ab
 
         ksort($mergedData);
 
-        try {
-            $return = @vsprintf($this->_reverse, $mergedData);
-        } catch (ValueError $e) {
+        if (count($mergedData) === 0) {
             throw new Zend_Controller_Router_Exception('Cannot assemble. Too few arguments?');
         }
+
+        $return = @vsprintf($this->_reverse, $mergedData);
 
         if ($return === false) {
             throw new Zend_Controller_Router_Exception('Cannot assemble. Too few arguments?');
