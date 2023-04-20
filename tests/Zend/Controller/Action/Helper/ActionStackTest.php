@@ -152,7 +152,8 @@ class Zend_Controller_Action_Helper_ActionStackTest extends PHPUnit\Framework\Te
             $this->fail('Zend_Controller_Action_Exception should be thrown');
         } catch (Zend_Exception $e) {
             $this->assertInstanceOf(
-                Zend_Controller_Action_Exception::class, $e,
+                Zend_Controller_Action_Exception::class,
+                $e,
                 'Zend_Controller_Action_Exception expected, ' . get_class($e)
                     . ' caught'
             );
